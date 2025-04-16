@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Syed Saad Habibi - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      color: white;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 2px, transparent 1px);
+      background-size: 100px 100px;
+      z-index: 0;
+      animation: moveBackground 60s linear infinite;
+    }
+
+    @keyframes moveBackground {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    .navbar {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(15, 32, 39, 0.9);
+      padding: 10px 20px;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 219, 222, 0.2);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .logo {
+      color: #00dbde;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #00dbde;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #203a43;
+        flex-direction: column;
+        padding: 15px 20px;
+        border-radius: 10px;
+        gap: 15px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+    }
+
+    .social-icons {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+
+    .social-icons a {
+      color: #ffffff;
+      font-size: 1.8rem;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #00dbde;
+    }
+
+    .content {
+      padding: 120px 20px 60px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #00dbde, #fc00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .content p {
+      font-size: 1.5rem;
+      color: #ccc;
+    }
+
+    .typing-text {
+      font-size: 1.2rem;
+      color: #00dbde;
+      height: 30px;
+      margin-top: 10px;
+    }
+
+    .animated-person {
+      margin-top: 40px;
+     
+      
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 20px;
+      width: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 219, 222, 0.3);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .skills-list div {
+      background: rgba(255,255,255,0.1);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+    }
+
+    .contact-form button {
+      padding: 12px;
+      background: #00dbde;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #0f2027;
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-animation"></div>
+
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">Syed Saad Habibi</div>
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="social-icons">
+    <a href="https://github.com/saadhabibi" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/syed-saad-habibi-551b581ab/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/codewithsaad001/#" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+
+  <div class="content">
+    <h1>Hi, I'm Syed Saad Habibi</h1>
+    <p>Full Stack Developer - MERN | PHP & MySQL</p>
+    <div class="typing-text" id="typing-text"></div>
+    <div class="animated-person">
+      <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_jtbfg2nb.json"
+        background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+      </lottie-player>
+    </div>
+  </div>
+
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p style="max-width: 700px; margin: auto; font-size: 1.2rem; color: #ccc;">
+      Motivated and detail-oriented BCA graduate with strong expertise in web development.
+      Proficient in HTML, CSS, JavaScript, React, PHP and the Database with hands-on experience in building
+      dynamic websites and web applications. Passionate about staying updated with the latest
+      industry trends and continuously enhancing my programming skills.
+      <br>work with me email: syedsaadhabibi@gmail.com
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-cards">
+      <div class="project-card">
+        <h3>E-commerce Website</h3>
+        <p>React, Node.js, MongoDB-based shopping platform with authentication and payments.</p>
+      </div>
+      <div class="project-card">
+        <h3>Teacher hiring system</h3>
+        <p>Developed a robust online platform enabling teachers
+          to seamlessly submit their professional information.
+          </p>
+      </div>
+      <div class="project-card">
+        <h3>Task Manager</h3>
+        <p>Organize tasks, set deadlines – built using MERN stack.</p>
+      </div>
+      <div class="project-card">
+        <h3>School websites</h3>
+        <p>The school website stands out with its sleek design, user-friendly interface, and dynamic features like online admissions, event updates, and a dedicated teacher-student portal—all tailored for modern educational needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <div>HTML</div>
+      <div>CSS</div>
+      <div>JavaScript</div>
+      <div>React</div>
+      <div>Node.js</div>
+      <div>Express</div>
+      <div>MongoDB</div>
+      <div>PHP</div>
+      <div>MySQL</div>
+      <div>Wordpress</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Syed Saad Habibi. All rights reserved.
+  </footer>
+
+  <script>
+    const roles = ["Web Developer", "MERN Stack Expert", "PHP & MySQL Specialist"];
+    let i = 0, j = 0;
+    const typingText = document.getElementById("typing-text");
+
+    function type() {
+      if (j <= roles[i].length) {
+        typingText.innerText = roles[i].substring(0, j++);
+        setTimeout(type, 100);
+      } else {
+        setTimeout(() => {
+          j = 0;
+          i = (i + 1) % roles.length;
+          type();
+        }, 2000);
+      }
+    }
+    type();
+
+    document.getElementById("menu-toggle").onclick = () => {
+      document.getElementById("nav-links").classList.toggle("show");
+    };
+
+    window.onload = () => {
+      const message = new SpeechSynthesisUtterance("Hello, this is Saad Habibi.");
+      message.voice = speechSynthesis.getVoices().find(voice => voice.name.includes("Google UK English Male")) || speechSynthesis.getVoices()[0];
+      speechSynthesis.speak(message);
+    };
+
+    const fadeElements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.1 });
+
+    fadeElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
