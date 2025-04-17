@@ -363,23 +363,32 @@
     &copy; 2025 Syed Saad Habibi. All rights reserved.
   </footer>
 <script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  // Toggle mobile menu
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  // Smooth scrolling for nav links
   document.querySelectorAll("#nav-links a").forEach(link => {
     link.addEventListener("click", (e) => {
-      e.preventDefault(); // prevent default jump
-  
+      e.preventDefault();
+
       const targetId = link.getAttribute("href").substring(1);
       const targetSection = document.getElementById(targetId);
-  
+
       if (targetSection) {
         targetSection.scrollIntoView({ behavior: "smooth" });
       }
-  
-      // Close menu after scroll (with delay for smooth UX)
+
       setTimeout(() => {
-        document.getElementById("nav-links").classList.remove("show");
+        navLinks.classList.remove("show");
       }, 300);
     });
   });
 </script>
+
 </body>
 </html>
