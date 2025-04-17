@@ -272,7 +272,7 @@
         <i class="fas fa-bars"></i>
       </div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -286,7 +286,7 @@
     <a href="https://www.linkedin.com/in/syed-saad-habibi-551b581ab/" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="https://www.instagram.com/codewithsaad001/#" target="_blank"><i class="fab fa-instagram"></i></a>
   </div>
-
+  <section id="home">
   <div class="content">
     <h1>Hi, I'm Syed Saad Habibi</h1>
     <p>Full Stack Developer - MERN | PHP & MySQL</p>
@@ -297,8 +297,8 @@
       </lottie-player>
     </div>
   </div>
-
-  <section id="about" class="fade-in">
+  </section>
+  <section id="about">
     <h2>About Me</h2>
     <p style="max-width: 700px; margin: auto; font-size: 1.2rem; color: #ccc;">
       Motivated and detail-oriented BCA graduate with strong expertise in web development.
@@ -362,44 +362,24 @@
   <footer>
     &copy; 2025 Syed Saad Habibi. All rights reserved.
   </footer>
-
-  <script>
-    const roles = ["Web Developer", "MERN Stack Expert", "PHP & MySQL Specialist"];
-    let i = 0, j = 0;
-    const typingText = document.getElementById("typing-text");
-
-    function type() {
-      if (j <= roles[i].length) {
-        typingText.innerText = roles[i].substring(0, j++);
-        setTimeout(type, 100);
-      } else {
-        setTimeout(() => {
-          j = 0;
-          i = (i + 1) % roles.length;
-          type();
-        }, 2000);
+<script>
+  document.querySelectorAll("#nav-links a").forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent default jump
+  
+      const targetId = link.getAttribute("href").substring(1);
+      const targetSection = document.getElementById(targetId);
+  
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth" });
       }
-    }
-    type();
-
-    document.getElementById("menu-toggle").onclick = () => {
-      document.getElementById("nav-links").classList.toggle("show");
-    };
-
-    window.onload = () => {
-      const message = new SpeechSynthesisUtterance("Hello, this is Saad Habibi.");
-      message.voice = speechSynthesis.getVoices().find(voice => voice.name.includes("Google UK English Male")) || speechSynthesis.getVoices()[0];
-      speechSynthesis.speak(message);
-    };
-
-    const fadeElements = document.querySelectorAll(".fade-in");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("show");
-      });
-    }, { threshold: 0.1 });
-
-    fadeElements.forEach(el => observer.observe(el));
-  </script>
+  
+      // Close menu after scroll (with delay for smooth UX)
+      setTimeout(() => {
+        document.getElementById("nav-links").classList.remove("show");
+      }, 300);
+    });
+  });
+</script>
 </body>
 </html>
