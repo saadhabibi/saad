@@ -363,6 +363,24 @@
     &copy; 2025 Syed Saad Habibi. All rights reserved.
   </footer>
 <script>
+const roles = ["Web Developer", "MERN Stack Expert", "PHP & MySQL Specialist"];
+    let i = 0, j = 0;
+    const typingText = document.getElementById("typing-text");
+
+    function type() {
+      if (j <= roles[i].length) {
+        typingText.innerText = roles[i].substring(0, j++);
+        setTimeout(type, 100);
+      } else {
+        setTimeout(() => {
+          j = 0;
+          i = (i + 1) % roles.length;
+          type();
+        }, 2000);
+      }
+    }
+    type();
+  
   const menuToggle = document.getElementById("menu-toggle");
   const navLinks = document.getElementById("nav-links");
 
