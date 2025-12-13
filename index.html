@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saad Habibi | Creative Portfolio</title>
 
-  <!-- Google Font -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -63,7 +63,6 @@
       color:#38bdf8;
     }
 
-    /* HERO SECTION */
     .hero{
       min-height:100vh;
       display:flex;
@@ -76,7 +75,7 @@
       background:linear-gradient(135deg,#020617,#0f172a,#020617);
     }
 
-    /* Background Shape Image */
+   
     .hero::after{
       content:"";
       position:absolute;
@@ -92,7 +91,7 @@
       z-index:1;
     }
 
-    /* Visible Profile Image (Safe Fallback) */
+  
     .profile-wrap{
       position:absolute;
       right:0px;
@@ -110,11 +109,7 @@
       box-shadow:0 0 40px rgba(56,189,248,0.4);
     }
 
-    /* Decorative rings */
-
-    /* Mobile Triangle Accent */
-    /* Triangle accent only for mobile */
-    /* Triangle accent only for mobile */
+    
     .triangle-accent{
       display:none;
       position:absolute;
@@ -226,7 +221,6 @@
       background:#0ea5e9;
     }
 
-    /* SCROLL REVEAL EFFECT */
     .reveal{
       opacity:0;
       transform:translateY(60px);
@@ -237,7 +231,7 @@
       transform:translateY(0);
     }
 
-    /* SECTIONS */
+
     section{
       padding:80px 40px;
     }
@@ -249,7 +243,6 @@
       color:#38bdf8;
     }
 
-    /* PROJECTS */
     .projects{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -382,7 +375,7 @@
       if(typingEl) type();
     });
 
-    // Scroll Animation
+   
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if(entry.isIntersecting){ entry.target.classList.add('show'); }
@@ -392,7 +385,7 @@
       document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
     });
 
-    // Active Nav
+   
     window.addEventListener('scroll',()=>{
       let fromTop = window.scrollY + 100;
       document.querySelectorAll('nav ul li a').forEach(link=>{
@@ -421,7 +414,7 @@
     </nav>
   </header>
 
-  <!-- HERO -->
+ 
   <section class="hero reveal">
     <div class="hero-content">
       <h2>Hi, I'm <span>Saad Habibi</span><br><span id="typing" style="font-size:20px;color:#38bdf8"></span></h2>
@@ -430,14 +423,14 @@
       <a href="#projects" class="btn">View My Work</a>
     </div>
 
-    <!-- Profile Image -->
+  
     <div class="profile-wrap">
       <span class="triangle-accent"></span>
       <img src="profile.png" alt="Saad Habibi" class="profile-img">
     </div>
   </section>
 
-  <!-- PROJECTS -->
+
   <section id="projects" class="reveal">
     <h2 class="section-title">Projects</h2>
     <div class="projects">
@@ -479,3 +472,4 @@ I am a continuous learner who actively improves skills through projects and onli
 
 </body>
 </html>
+
