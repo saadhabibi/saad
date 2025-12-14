@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saad Habibi | Creative Portfolio</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     *{
@@ -64,6 +64,7 @@
       color:#38bdf8;
     }
 
+    /* HERO SECTION */
     .hero{
       min-height:100vh;
       display:flex;
@@ -92,7 +93,7 @@
       z-index:1;
     }
 
-  
+    
     .profile-wrap{
       position:absolute;
       right:0px;
@@ -222,6 +223,7 @@
       background:#0ea5e9;
     }
 
+    
     .reveal{
       opacity:0;
       transform:translateY(60px);
@@ -232,7 +234,7 @@
       transform:translateY(0);
     }
 
-
+    /* SECTIONS */
     section{
       padding:80px 40px;
     }
@@ -244,6 +246,7 @@
       color:#38bdf8;
     }
 
+    /* PROJECTS */
     .projects{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -322,7 +325,7 @@
         height:180px;
       }
 
-      /* keep arrow on mobile */
+      
       .triangle-accent{
         display:block;
         top:-18px;
@@ -357,7 +360,9 @@
         top:-30px;
         left:-30px;
       }
-    .social-links{
+
+    
+.social-links{
   position:fixed;
   left:20px;
   top:50%;
@@ -400,9 +405,48 @@
   }
 }
 
+
+
+ .contact-box{
+      background:#fff;
+      padding:25px;
+      width:100%;
+      max-width:400px;
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
+      border-radius:8px;
+    }
+    .contact-box h2{
+      text-align:center;
+      margin-bottom:20px;
+    }
+    .contact-box input,
+    .contact-box textarea{
+      width:100%;
+      padding:10px;
+      margin-bottom:12px;
+      border:1px solid #ccc;
+      border-radius:5px;
+    }
+    .contact-box textarea{
+      resize:none;
+      height:120px;
+    }
+    .contact-box button{
+      width:100%;
+      padding:10px;
+      background:#007bff;
+      color:#fff;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+    }
+    .contact-box button:hover{
+      background:#0056b3;
+    }
+    
   </style>
   <script>
-    // Typing Effect
+   
     document.addEventListener('DOMContentLoaded',()=>{
       const texts = ["Full Stack Developer","MERN Stack Expert","PHP & MySQL Developer"];
       let count = 0, index = 0;
@@ -428,7 +472,7 @@
       document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
     });
 
-   
+    // Active Nav
     window.addEventListener('scroll',()=>{
       let fromTop = window.scrollY + 100;
       document.querySelectorAll('nav ul li a').forEach(link=>{
@@ -440,21 +484,48 @@
         }
       });
     });
+
+
+    // contact
+
+    
+(function(){
+    emailjs.init("cJh5lYRzFc4hU5091"); // <-- yaha apni public key dalo
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_d85y013",  
+      "template_n4zy9lg",  
+      this
+    ).then(function(){
+      alert("Message sent successfully!");
+      document.getElementById("contact-form").reset();
+    }, function(error){
+      alert("Failed to send message!");
+      console.log(error);
+    });
+  });
+
   </script>
 </head>
 <body>
-    <!-- SOCIAL LINKS -->
+
+  <!-- SOCIAL LINKS -->
 <div class="social-links">
-  <a href="https://github.com/saadhabibi" target="_blank">
+  <a href="https://github.com/yourusername" target="_blank">
     <i class="fab fa-github"></i>
   </a>
-  <a href="https://www.linkedin.com/in/syed-saad-habibi-551b581ab/" target="_blank">
+  <a href="https://www.linkedin.com/in/yourusername" target="_blank">
     <i class="fab fa-linkedin-in"></i>
   </a>
-  <a href="https://www.instagram.com/codewithsaad001/" target="_blank">
+  <a href="https://www.instagram.com/yourusername" target="_blank">
     <i class="fab fa-instagram"></i>
   </a>
 </div>
+
 
   <!-- NAVBAR -->
   <header>
@@ -469,7 +540,7 @@
     </nav>
   </header>
 
- 
+  <!-- HERO -->
   <section class="hero reveal">
     <div class="hero-content">
       <h2>Hi, I'm <span>Saad Habibi</span><br><span id="typing" style="font-size:20px;color:#38bdf8"></span></h2>
@@ -478,14 +549,14 @@
       <a href="#projects" class="btn">View My Work</a>
     </div>
 
-  
+    <!-- Profile Image -->
     <div class="profile-wrap">
       <span class="triangle-accent"></span>
       <img src="profile.png" alt="Saad Habibi" class="profile-img">
     </div>
   </section>
 
-
+  <!-- PROJECTS -->
   <section id="projects" class="reveal">
     <h2 class="section-title">Projects</h2>
     <div class="projects">
@@ -519,15 +590,26 @@ I am a continuous learner who actively improves skills through projects and onli
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="contact reveal">
-    <h2 class="section-title">Contact</h2>
-    <p>Email: syedsaadhabibi@gmail.com</p>
-    <a href="#" class="btn">Hire Me</a>
-  </section>
+  <!-- CONTACT -->
+<section id="contact" class="contact reveal">
+  <h2 class="section-title">Contact</h2>
+
+  <form id="contact-form" style="max-width:400px;margin:30px auto;">
+    <input type="text" name="name" placeholder="Your Name" required
+      style="width:100%;padding:12px;margin-bottom:12px;border-radius:6px;border:none;">
+
+    <input type="email" name="email" placeholder="Your Email" required
+      style="width:100%;padding:12px;margin-bottom:12px;border-radius:6px;border:none;">
+
+    <textarea name="message" placeholder="Your Message" required
+      style="width:100%;padding:12px;height:120px;border-radius:6px;border:none;"></textarea>
+
+    <button type="submit" class="btn" style="border:none;cursor:pointer;">
+      Send Message
+    </button>
+  </form>
+</section>
+
 
 </body>
 </html>
-
-
-
-
