@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saad Habibi | Creative Portfolio</title>
 
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -356,7 +357,49 @@
         top:-30px;
         left:-30px;
       }
-    
+    .social-links{
+  position:fixed;
+  left:20px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  z-index:999;
+}
+
+.social-links a{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:50%;
+  color:#38bdf8;
+  font-size:18px;
+  transition:0.3s;
+}
+
+.social-links a:hover{
+  background:#38bdf8;
+  color:#000;
+  transform:translateX(6px);
+}
+
+/* Mobile me thoda chota */
+@media(max-width:768px){
+  .social-links{
+    left:10px;
+  }
+  .social-links a{
+    width:36px;
+    height:36px;
+    font-size:16px;
+  }
+}
+
   </style>
   <script>
     // Typing Effect
@@ -400,6 +443,18 @@
   </script>
 </head>
 <body>
+    <!-- SOCIAL LINKS -->
+<div class="social-links">
+  <a href="https://github.com/yourusername" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/yourusername" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://www.instagram.com/yourusername" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
 
   <!-- NAVBAR -->
   <header>
@@ -472,4 +527,5 @@ I am a continuous learner who actively improves skills through projects and onli
 
 </body>
 </html>
+
 
